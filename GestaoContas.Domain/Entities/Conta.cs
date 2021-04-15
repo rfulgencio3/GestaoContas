@@ -9,11 +9,10 @@ namespace GestaoContas.Domain.Entities
         public string Descricao { get; private set; }
         public Status Status { get; private set; }
         public Tipo Tipo { get; private set; }
-        public decimal? Saldo { get; private set; }
 
         public Correntista Correntista { get; set; }
 
-        public Conta(Guid contaId, string descricao, Status status, Tipo tipo, decimal saldo)
+        public Conta(Guid contaId, string descricao, Status status, Tipo tipo)
         {
             if (string.IsNullOrEmpty(contaId.ToString()))
             {
@@ -24,7 +23,6 @@ namespace GestaoContas.Domain.Entities
             Descricao = descricao;
             Status = status;
             Tipo = tipo;
-            Saldo = saldo;
         }
 
         internal void AssociarCorrentista(Guid correntistaId)

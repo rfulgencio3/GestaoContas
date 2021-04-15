@@ -12,7 +12,7 @@ namespace GestaoContas.Domain.Tests.Contas
         {
             // Arrange
             var correntista = Correntista.CorrentistaFactory.NovoCorrentista(Guid.NewGuid());
-            var conta = new Conta(Guid.NewGuid(), "Conta Para Depósitos", Status.ACTIVE, Tipo.DEPOSIT, 2469.98M);
+            var conta = new Conta(Guid.NewGuid(), "Conta Para Depósitos", Status.ACTIVE, Tipo.DEPOSIT);
 
             // Act
             correntista.AdicionarConta(conta);

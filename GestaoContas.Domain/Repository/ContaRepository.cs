@@ -15,22 +15,22 @@ namespace GestaoContas.Domain.Repository
             _gestaoContasDbContext = gestaoContasDbContext;
         }
 
-        public void AdicionarConta(Conta conta)
+        public void Adicionar(Conta conta)
         {
             _gestaoContasDbContext.Contas.Add(conta);
             _gestaoContasDbContext.SaveChanges();
         }
-        public IEnumerable<Conta> ObterTodasContas()
+        public IEnumerable<Conta> ObterTodas()
         {
             return _gestaoContasDbContext.Contas.ToList();
         }
-        public IEnumerable<Conta> ObterContaPorIdentificador(Guid contaId)
+        public IEnumerable<Conta> ObterPorIdentificador(Guid contaId)
         {
             return _gestaoContasDbContext.Contas
                 .Where(p => p.ContaId.Equals(contaId))
                 .ToList();
         }
-        public IEnumerable<Conta> ObterTodasContasPorCorrentista(Guid correntistaId)
+        public IEnumerable<Conta> ObterTodasPorCorrentista(Guid correntistaId)
         {
             return _gestaoContasDbContext.Contas
                 .Where(p => p.CorrentistaId.Equals(correntistaId))
