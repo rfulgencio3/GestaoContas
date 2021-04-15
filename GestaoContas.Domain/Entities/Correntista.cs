@@ -7,13 +7,20 @@ namespace GestaoContas.Domain.Entities
     {
         public Guid CorrentistaId { get; private set; }
         public string Nome { get; set; }
-        
+        public Status Status { get; set; }
+
         private readonly List<Conta> _contas;
         public IReadOnlyCollection<Conta> Conta => _contas;
         
         protected Correntista() 
         { 
             _contas = new List<Conta>(); 
+        }
+        public Correntista(Guid correntistaId, string nome, Status status)
+        {
+            CorrentistaId = correntistaId;
+            Nome = nome;
+            Status = status;
         }
 
         public void AdicionarConta(Conta conta)
@@ -36,9 +43,13 @@ namespace GestaoContas.Domain.Entities
                 {
                     CorrentistaId = correntistaId
                 };
-
+                correntista.StatusAtivo();
                 return correntista;
             }
+        }
+        private void StatusAtivo()
+        {
+            Status = Status.ACTIVE;
         }
     }
 }

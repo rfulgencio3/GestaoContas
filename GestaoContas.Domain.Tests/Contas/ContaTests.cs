@@ -26,5 +26,5 @@ namespace GestaoContas.Domain.Tests.Contas
     //Associar conta já existente para outro correntista deve retornar Exception
     //Associar conta mesmo tipo para mesmo correntista deve retornar Exception
     //Associar nova conta para o mesmo correntista deve validar tipo diferente ao já existente
-    //Correntista com status diferente de ACTIVE deve retornar Exception
+    
 }
