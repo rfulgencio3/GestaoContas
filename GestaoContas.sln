@@ -5,9 +5,13 @@ VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Domain", "0 - Domain", "{6D39152B-E5E8-483A-965C-309737A0A9DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestaoContas.Domain", "GestaoContas.Domain\GestaoContas.Domain.csproj", "{5913CA88-1487-4292-840E-E401AF0FC6CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoContas.Domain", "GestaoContas.Domain\GestaoContas.Domain.csproj", "{5913CA88-1487-4292-840E-E401AF0FC6CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestaoContas.Domain.Tests", "GestaoContas.Domain.Tests\GestaoContas.Domain.Tests.csproj", "{98586C93-C967-4096-9D9E-1F13B626D97B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoContas.Domain.Tests", "GestaoContas.Domain.Tests\GestaoContas.Domain.Tests.csproj", "{98586C93-C967-4096-9D9E-1F13B626D97B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Web", "1 - Web", "{BDE540DE-AF73-424A-93E5-DCC05F9C920C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.1 - API", "1.1 - API", "{C94D11CE-C343-4096-AEC5-C55E2A28AA88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +34,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{5913CA88-1487-4292-840E-E401AF0FC6CF} = {6D39152B-E5E8-483A-965C-309737A0A9DE}
 		{98586C93-C967-4096-9D9E-1F13B626D97B} = {6D39152B-E5E8-483A-965C-309737A0A9DE}
+		{C94D11CE-C343-4096-AEC5-C55E2A28AA88} = {BDE540DE-AF73-424A-93E5-DCC05F9C920C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {77B33833-AC46-42AC-A15F-AB5D264CE168}
