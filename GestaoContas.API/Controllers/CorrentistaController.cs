@@ -77,16 +77,16 @@ namespace GestaoContas.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Deletar(int id)
+        public IActionResult Deletar(int identificador)
         {
             try
             { 
-                if (_correntistaRepository.Existe(id))
+                if (_correntistaRepository.Existe(identificador))
                 {
-                    var correntista = _correntistaRepository.ObterPorIdentificador(id);
+                    var correntista = _correntistaRepository.ObterPorIdentificador(identificador);
                     _correntistaRepository.Excluir(correntista);
 
-                    return Ok($"Registro excluido.");
+                    return Ok($"Registro excluido com sucesso.");
                 }
                 return NotFound("Registo não encontrado.");
                 }
