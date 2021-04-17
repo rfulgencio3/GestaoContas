@@ -24,7 +24,7 @@ namespace GestaoContas.API.Controllers
                 var correntistas = _correntistaRepository.ObterTodos();
                 if (!correntistas.Any())
                 {
-                    return NotFound();
+                    return NotFound("Nenhuma informação cadastrada.");
                 }
                 return Ok(correntistas);
             }
@@ -44,13 +44,12 @@ namespace GestaoContas.API.Controllers
                     return StatusCode(409, "Já existe um cadastro com esse numero de Identificador.");
                 }
                 _correntistaRepository.Adicionar(correntista);
-                return Ok($"Correntista com código identificador {correntista.Identificador} adicionado com sucesso.");
+                return Ok($"Correntista {correntista.Nome} com código identificador {correntista.Identificador} adicionado com sucesso.");
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Erro interno no servidor: {ex.Message.ToString()}");
             }
-
         }
 
         [HttpPut]
@@ -64,9 +63,11 @@ namespace GestaoContas.API.Controllers
                     return Ok("Registro atualizado.");
                 }
                 return NotFound("Registo não encontrado.");
-                
             }
-            
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno no servidor: {ex.Message.ToString()}");
+            }
         }
 
         [HttpPatch]
@@ -78,7 +79,21 @@ namespace GestaoContas.API.Controllers
         [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {
-            return Ok();
+            try
+            { 
+                if (_correntistaRepository.Existe(id))
+                {
+                    var correntista = _correntistaRepository.ObterPorIdentificador(id);
+                    _correntistaRepository.Excluir(correntista);
+
+                    return Ok($"Registro excluido.");
+                }
+                return NotFound("Registo não encontrado.");
+                }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno no servidor: {ex.Message.ToString()}");
+            }
         }
     }
 }

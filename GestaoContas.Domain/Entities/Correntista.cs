@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace GestaoContas.Domain.Entities
 {
     public class Correntista
     {
-        public Guid CorrentistaId { get; private set; }
+        [Key]
         public int Identificador { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
@@ -18,18 +19,12 @@ namespace GestaoContas.Domain.Entities
         { 
             _contas = new List<Conta>(); 
         }
-        public Correntista(Guid correntistaId, int identificador, string nome, string descricao, string status)
+        public Correntista(int identificador, string nome, string descricao, string status)
         {
-            CorrentistaId = correntistaId;
+            Identificador = identificador;
             Nome = nome;
             Descricao = descricao;
             Status = status;
-        }
-
-        public void AdicionarConta(Conta conta)
-        {
-            ValidaInformacoesConta(conta);
-            conta.AssociarCorrentista(CorrentistaId);
         }
 
         private void ValidaInformacoesConta(Conta conta)
@@ -40,11 +35,11 @@ namespace GestaoContas.Domain.Entities
 
         public static class CorrentistaFactory
         {
-            public static Correntista NovoCorrentista(Guid correntistaId)
+            public static Correntista NovoCorrentista(int identificador)
             {
                 var correntista = new Correntista
                 {
-                    CorrentistaId = correntistaId
+                    Identificador = identificador
                 };
                 return correntista;
             }

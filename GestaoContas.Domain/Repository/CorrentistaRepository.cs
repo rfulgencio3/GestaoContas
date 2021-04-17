@@ -1,6 +1,7 @@
 ﻿using GestaoContas.Domain.Data;
 using GestaoContas.Domain.Entities;
 using GestaoContas.Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,15 +21,20 @@ namespace GestaoContas.Domain.Repository
             _gestaoContasDbContext.Correntistas.Add(correntista);
             _gestaoContasDbContext.SaveChanges();
         }
+        public void Excluir(Correntista correntista)
+        {
+            _gestaoContasDbContext.Correntistas.Remove(correntista);
+            _gestaoContasDbContext.SaveChanges();
+        }
         public IEnumerable<Correntista> ObterTodos()
         {
             return _gestaoContasDbContext.Correntistas.ToList();
         }
-        public IEnumerable<Correntista> ObterPorIdentificador(Guid correntistaId)
+        public Correntista ObterPorIdentificador(int identificador)
         {
             return _gestaoContasDbContext.Correntistas
-                .Where(p => p.CorrentistaId.Equals(correntistaId))
-                .ToList();
+                .Where(p => p.Identificador.Equals(identificador))
+                .FirstOrDefault();
         }
         public IEnumerable<Correntista> ObterPorNome(string nome)
         {
@@ -38,7 +44,8 @@ namespace GestaoContas.Domain.Repository
         }
         public void Atualizar(Correntista correntista)
         {
-            _gestaoContasDbContext.Entry(correntista).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _gestaoContasDbContext.Attach(correntista);
+            _gestaoContasDbContext.Entry(correntista).State = EntityState.Modified;
             _gestaoContasDbContext.SaveChanges();
 
         }

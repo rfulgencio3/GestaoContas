@@ -7,8 +7,10 @@ namespace GestaoContas.Domain.Interfaces
     public interface ICorrentistaRepository
     {
         void Adicionar(Correntista correntista);
+        void Atualizar(Correntista correntista);
+        void Excluir(Correntista correntista);
         IEnumerable<Correntista> ObterTodos();
-        IEnumerable<Correntista> ObterPorIdentificador(Guid correntistaId);
+        Correntista ObterPorIdentificador(int identificador);
         IEnumerable<Correntista> ObterPorNome(string nome);
         bool Existe(int identificador);
     }
