@@ -32,7 +32,8 @@ namespace GestaoContas.API
                 ServiceLifetime.Scoped,
                 ServiceLifetime.Scoped);
 
-            services.AddControllers();
+            services.AddControllers()
+                    .AddNewtonsoftJson();
 
             services.AddScoped<ICorrentistaRepository, CorrentistaRepository>();
             services.AddScoped<IContaRepository, ContaRepository>();

@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Web", "1 - Web", "{BDE5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.1 - API", "1.1 - API", "{C94D11CE-C343-4096-AEC5-C55E2A28AA88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestaoContas.API", "GestaoContas.API\GestaoContas.API.csproj", "{12733412-C69C-41F3-BC48-187CF46974A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoContas.API", "GestaoContas.API\GestaoContas.API.csproj", "{12733412-C69C-41F3-BC48-187CF46974A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
