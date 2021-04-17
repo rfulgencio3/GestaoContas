@@ -36,6 +36,16 @@ namespace GestaoContas.Domain.Repository
                 .Where(p => p.Nome.Equals(nome))
                 .ToList();
         }
+        public void Atualizar(Correntista correntista)
+        {
+            _gestaoContasDbContext.Entry(correntista).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _gestaoContasDbContext.SaveChanges();
 
+        }
+        public bool Existe(int identificador)
+        {
+            return _gestaoContasDbContext.Correntistas
+                .Any(p => p.Identificador == identificador);
+        }
     }
 }

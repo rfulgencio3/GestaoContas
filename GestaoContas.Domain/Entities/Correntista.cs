@@ -6,8 +6,10 @@ namespace GestaoContas.Domain.Entities
     public class Correntista
     {
         public Guid CorrentistaId { get; private set; }
+        public int Identificador { get; set; }
         public string Nome { get; set; }
-        public Status Status { get; set; }
+        public string Descricao { get; set; }
+        public string Status { get; set; }
 
         private readonly List<Conta> _contas;
         public IReadOnlyCollection<Conta> Conta => _contas;
@@ -16,10 +18,11 @@ namespace GestaoContas.Domain.Entities
         { 
             _contas = new List<Conta>(); 
         }
-        public Correntista(Guid correntistaId, string nome, Status status)
+        public Correntista(Guid correntistaId, int identificador, string nome, string descricao, string status)
         {
             CorrentistaId = correntistaId;
             Nome = nome;
+            Descricao = descricao;
             Status = status;
         }
 
@@ -43,13 +46,8 @@ namespace GestaoContas.Domain.Entities
                 {
                     CorrentistaId = correntistaId
                 };
-                correntista.StatusAtivo();
                 return correntista;
             }
-        }
-        private void StatusAtivo()
-        {
-            Status = Status.ACTIVE;
         }
     }
 }

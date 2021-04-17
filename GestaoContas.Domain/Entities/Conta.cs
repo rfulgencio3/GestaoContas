@@ -9,7 +9,6 @@ namespace GestaoContas.Domain.Entities
         public string Descricao { get; private set; }
         public Status Status { get; private set; }
         public Tipo Tipo { get; private set; }
-
         public Correntista Correntista { get; set; }
 
         public Conta(Guid contaId, string descricao, Status status, Tipo tipo)

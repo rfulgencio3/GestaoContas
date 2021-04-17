@@ -10,5 +10,6 @@ namespace GestaoContas.Domain.Interfaces
         IEnumerable<Correntista> ObterTodos();
         IEnumerable<Correntista> ObterPorIdentificador(Guid correntistaId);
         IEnumerable<Correntista> ObterPorNome(string nome);
+        bool Existe(int identificador);
     }
 }
