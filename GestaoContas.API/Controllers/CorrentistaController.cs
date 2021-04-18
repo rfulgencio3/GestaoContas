@@ -70,7 +70,7 @@ namespace GestaoContas.API.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{identificador}")]
         public IActionResult Deletar(int identificador)
         {
             try
