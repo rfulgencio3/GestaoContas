@@ -13,23 +13,22 @@ namespace GestaoContas.API.Controllers
     public class ContaController : ControllerBase
     {
         IContaRepository _contaRepository;
-        ICorrentistaRepository _correntistaRepository;
-        public ContaController(IContaRepository contaRepository, ICorrentistaRepository correntistaRepository)
+        public ContaController(IContaRepository contaRepository)
         {
             _contaRepository = contaRepository;
-            _correntistaRepository = correntistaRepository;
         }
 
-        [HttpGet]
-        public IActionResult ObterPorIdentificador(Conta conta)
+        [HttpGet("{identificador}")]
+        public IActionResult ObterPorIdentificador(int identificador)
         {
             try
             {
-                if (!_correntistaRepository.Existe(conta.Identificador))
+                var conta = _contaRepository.ObterPorIdentificador(identificador);
+                if (conta == null)
                 {
-                    return StatusCode(404, $"Transação não realizada, favor verificar se existe o identificador {conta.Identificador} cadastrado.");
+                    return StatusCode(404, $"Consulta não realizada, não foi localizado valor de saldo para o identificador {identificador}.");
                 }
-                return Ok(conta);
+                return Ok(conta.Saldo);
             }
             catch (Exception ex)
             {

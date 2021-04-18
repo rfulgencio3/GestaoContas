@@ -37,7 +37,9 @@ namespace GestaoContas.Domain.Repository
                 .Where(p => p.Identificador == transacao.Identificador)
                 .Sum(p => p.Valor);
 
-            ContaSaldo contaSaldo = new ContaSaldo(transacao.Identificador, saldo);
+            Conta contaSaldo = new Conta(transacao.Identificador, saldo);
+            _gestaoContasDbContext.Contas.Update(contaSaldo);
+            _gestaoContasDbContext.SaveChanges();
         }
     }
 }

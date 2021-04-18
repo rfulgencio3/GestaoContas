@@ -6,6 +6,6 @@ namespace GestaoContas.Domain.Interfaces
 {
     public interface IContaRepository
     {
-        Correntista ObterPorIdentificador(Conta conta);
+        Conta ObterPorIdentificador(int identificador);
     }
 }

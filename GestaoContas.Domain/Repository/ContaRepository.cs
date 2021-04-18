@@ -14,11 +14,9 @@ namespace GestaoContas.Domain.Repository
         {
             _gestaoContasDbContext = gestaoContasDbContext;
         }
-        public Correntista ObterPorIdentificador(Conta conta)
+        public Conta ObterPorIdentificador(int identificador)
         {
-            return _gestaoContasDbContext.Correntistas
-                .Where(p => p.Identificador.Equals(conta.Identificador))
-                .FirstOrDefault();
+            return _gestaoContasDbContext.Contas.FirstOrDefault(p => p.Identificador == identificador);
         }
     }
 }

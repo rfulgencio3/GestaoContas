@@ -20,6 +20,15 @@ namespace GestaoContas.Domain.Repository
         {
             _gestaoContasDbContext.Correntistas.Add(correntista);
             _gestaoContasDbContext.SaveChanges();
+            InserirSaldo(correntista.Identificador);
+        }
+
+        public void InserirSaldo(int identificador)
+        {
+            var saldo = 0.00M;
+            Conta contaSaldo = new Conta(identificador, saldo);
+            _gestaoContasDbContext.Contas.Add(contaSaldo);
+            _gestaoContasDbContext.SaveChanges();
         }
         public void Excluir(Correntista correntista)
         {

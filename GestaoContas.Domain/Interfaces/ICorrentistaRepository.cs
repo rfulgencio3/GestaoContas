@@ -9,6 +9,7 @@ namespace GestaoContas.Domain.Interfaces
         void Adicionar(Correntista correntista);
         void Atualizar(Correntista correntista);
         void Excluir(Correntista correntista);
+        void InserirSaldo(int identificador);
         IEnumerable<Correntista> ObterTodos();
         Correntista ObterPorIdentificador(int identificador);
         IEnumerable<Correntista> ObterPorNome(string nome);

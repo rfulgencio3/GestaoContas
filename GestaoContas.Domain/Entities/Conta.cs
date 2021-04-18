@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace GestaoContas.Domain.Entities
@@ -7,8 +8,7 @@ namespace GestaoContas.Domain.Entities
     {
         [Key]
         public int Identificador { get; set; }
-        public decimal Saldo { get; private set; }
-
+        public decimal Saldo { get; set; }
         public Conta(int identificador, decimal saldo)
         {
             Identificador = identificador;
