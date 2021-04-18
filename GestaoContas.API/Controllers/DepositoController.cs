@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 namespace GestaoContas.API.Controllers
 {
     [ApiController]
-    [Route("api/transacoes")]
-    public class TransacaoController : ControllerBase
+    [Route("api/depositos")]
+    public class DepositoController : ControllerBase
     {
-        ITransacaoRepository _transacaoRepository;
+        IDepositoRepository _depositoRepository;
         ICorrentistaRepository _correntistaRepository;
-        public TransacaoController(ITransacaoRepository transacaoRepository, ICorrentistaRepository correntistaRepository)
+        public DepositoController(IDepositoRepository depositoRepository, ICorrentistaRepository correntistaRepository)
         {
-            _transacaoRepository = transacaoRepository;
+            _depositoRepository = depositoRepository;
             _correntistaRepository = correntistaRepository;
         }
 
@@ -25,7 +25,7 @@ namespace GestaoContas.API.Controllers
         {
             try
             {
-                var correntistas = _transacaoRepository.ObterTodasPorIdentificador();
+                var correntistas = _depositoRepository.ObterTodosPorIdentificador();
                 if (!correntistas.Any())
                 {
                     return NotFound("Nenhuma informação cadastrada.");
@@ -39,17 +39,17 @@ namespace GestaoContas.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Adicionar([FromBody] Transacao transacao)
+        public IActionResult Adicionar([FromBody] Deposito deposito)
         {
             try
             {
-                if (!_correntistaRepository.Existe(transacao.Identificador)) 
+                if (!_correntistaRepository.Existe(deposito.Identificador)) 
                 {
-                    return StatusCode(404, $"Transação não realizada, favor verificar se existe o identificador {transacao.Identificador} cadastrado.");
+                    return StatusCode(404, $"Depósito não realizado, favor verificar se existe o identificador {deposito.Identificador} cadastrado.");
                 }
-                _transacaoRepository.Adicionar(transacao);
-                _transacaoRepository.AtualizaSaldo(transacao);
-                return Ok($"Transação com o valor de R$ {transacao.Valor} para o código identificador {transacao.Identificador} realizada com sucesso.");
+                _depositoRepository.Adicionar(deposito);
+                _depositoRepository.AtualizaSaldo(deposito);
+                return Ok($"Depósito com o valor de R$ {deposito.Valor} para o código identificador {deposito.Identificador} realizado com sucesso.");
             }
             catch (Exception ex)
             {

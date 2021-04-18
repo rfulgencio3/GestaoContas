@@ -6,17 +6,17 @@ using System.Linq;
 
 namespace GestaoContas.Domain.Repository
 {
-    public class TransacaoRepository : ITransacaoRepository
+    public class DepositoRepository : IDepositoRepository
     {
         private readonly GestaoContasDbContext _gestaoContasDbContext;
-        public TransacaoRepository(GestaoContasDbContext gestaoContasDbContext)
+        public DepositoRepository(GestaoContasDbContext gestaoContasDbContext)
         {
             _gestaoContasDbContext = gestaoContasDbContext;
         }
 
-        public void Adicionar(Transacao transacao)
+        public void Adicionar(Deposito deposito)
         {
-            _gestaoContasDbContext.Transacoes.Add(transacao);
+            _gestaoContasDbContext.Depositos.Add(deposito);
             _gestaoContasDbContext.SaveChanges();
         }
 
@@ -26,18 +26,18 @@ namespace GestaoContas.Domain.Repository
                 .Any(p => p.Identificador == identificador);
         }
 
-        public IEnumerable<Transacao> ObterTodasPorIdentificador()
+        public IEnumerable<Deposito> ObterTodosPorIdentificador()
         {
-            return _gestaoContasDbContext.Transacoes.ToList();
+            return _gestaoContasDbContext.Depositos.ToList();
         }
 
-        public void AtualizaSaldo(Transacao transacao)
+        public void AtualizaSaldo(Deposito deposito)
         {
-            var saldo = _gestaoContasDbContext.Transacoes
-                .Where(p => p.Identificador == transacao.Identificador)
+            var saldo = _gestaoContasDbContext.Depositos
+                .Where(p => p.Identificador == deposito.Identificador)
                 .Sum(p => p.Valor);
 
-            Conta contaSaldo = new Conta(transacao.Identificador, saldo);
+            Conta contaSaldo = new Conta(deposito.Identificador, saldo);
             _gestaoContasDbContext.Contas.Update(contaSaldo);
             _gestaoContasDbContext.SaveChanges();
         }
