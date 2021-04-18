@@ -8,6 +8,7 @@ namespace GestaoContas.Domain.Data
         public DbSet<Correntista> Correntistas { get; set; }
         public DbSet<Conta> Contas { get; set; }
         public DbSet<Deposito> Depositos { get; set; }
+        public DbSet<Transferencia> Transferencias { get; set; }
 
         public GestaoContasDbContext(DbContextOptions<GestaoContasDbContext> options) : base(options) { }
     }

@@ -39,6 +39,7 @@ namespace GestaoContas.API
             services.AddScoped<ICorrentistaRepository, CorrentistaRepository>();
             services.AddScoped<IContaRepository, ContaRepository>();
             services.AddScoped<IDepositoRepository, DepositoRepository>();
+            services.AddScoped<ITransferenciaRepository, TransferenciaRepository>();
 
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "Gestão de Contas API", Version = "v1" }); }); }
 

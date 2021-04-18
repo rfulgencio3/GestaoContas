@@ -20,12 +20,6 @@ namespace GestaoContas.Domain.Repository
             _gestaoContasDbContext.SaveChanges();
         }
 
-        public bool ValidaIdentificador(int identificador)
-        {
-            return _gestaoContasDbContext.Correntistas
-                .Any(p => p.Identificador == identificador);
-        }
-
         public IEnumerable<Deposito> ObterTodosPorIdentificador()
         {
             return _gestaoContasDbContext.Depositos.ToList();
