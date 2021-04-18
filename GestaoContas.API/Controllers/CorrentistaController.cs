@@ -70,12 +70,6 @@ namespace GestaoContas.API.Controllers
             }
         }
 
-        [HttpPatch]
-        public IActionResult AtualizarParcialmente([FromBody]Correntista correntista)
-        {
-            return Ok();
-        }
-
         [HttpDelete("{id}")]
         public IActionResult Deletar(int identificador)
         {

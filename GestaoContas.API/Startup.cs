@@ -38,7 +38,8 @@ namespace GestaoContas.API
 
             services.AddScoped<ICorrentistaRepository, CorrentistaRepository>();
             services.AddScoped<IContaRepository, ContaRepository>();
-            
+            services.AddScoped<ITransacaoRepository, TransacaoRepository>();
+
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "Gestão de Contas API", Version = "v1" }); }); }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

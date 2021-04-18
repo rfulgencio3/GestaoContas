@@ -24,17 +24,5 @@ namespace GestaoContas.Domain.Repository
         {
             return _gestaoContasDbContext.Contas.ToList();
         }
-        public IEnumerable<Conta> ObterPorIdentificador(Guid contaId)
-        {
-            return _gestaoContasDbContext.Contas
-                .Where(p => p.ContaId.Equals(contaId))
-                .ToList();
-        }
-        public IEnumerable<Conta> ObterTodasPorCorrentista(Guid correntistaId)
-        {
-            return _gestaoContasDbContext.Contas
-                .Where(p => p.CorrentistaId.Equals(correntistaId))
-                .ToList();
-        }
     }
 }

@@ -8,7 +8,5 @@ namespace GestaoContas.Domain.Interfaces
     {
         void Adicionar(Conta conta);
         IEnumerable<Conta> ObterTodas();
-        IEnumerable<Conta> ObterPorIdentificador(Guid contaId);
-        IEnumerable<Conta> ObterTodasPorCorrentista(Guid correntistaId);
     }
 }
