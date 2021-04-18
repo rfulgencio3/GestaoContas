@@ -8,6 +8,7 @@ namespace GestaoContas.Domain.Interfaces
     {
         Conta ObterPorIdentificador(int identificador);
         decimal VerificaSaldoOrigem(int identificadorOrigem);
-        void AtualizarSaldos(Transferencia transferencia);
+        void AtualizarSaldoContaOrigem(Transferencia transferencia);
+        void AtualizarSaldoContaDestino(Transferencia transferencia);
     }
 }

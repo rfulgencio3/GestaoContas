@@ -22,13 +22,8 @@ namespace GestaoContas.Domain.Repository
                     .Where(p => p.Identificador == identificadorOrigem)
                     .Sum(p => p.Valor);
         }
-        public void AtualizarSaldos(Transferencia transferencia)
-        {
-            AtualizarSaldoContaOrigem(transferencia);
-            AtualizarSaldoContaDestino(transferencia);
-        }
 
-        private void AtualizarSaldoContaOrigem(Transferencia transferencia)
+        public void AtualizarSaldoContaOrigem(Transferencia transferencia)
         {
             var saldoOrigem = _gestaoContasDbContext.Depositos
                 .Where(p => p.Identificador == transferencia.IdentificadorOrigem)
@@ -41,7 +36,7 @@ namespace GestaoContas.Domain.Repository
             _gestaoContasDbContext.SaveChanges();
         }
 
-        private void AtualizarSaldoContaDestino(Transferencia transferencia)
+        public void AtualizarSaldoContaDestino(Transferencia transferencia)
         {
             var saldoDestino = _gestaoContasDbContext.Depositos
                 .Where(p => p.Identificador == transferencia.IdentificadorOrigem)
