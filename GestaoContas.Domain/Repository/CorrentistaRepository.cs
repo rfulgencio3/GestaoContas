@@ -2,7 +2,6 @@
 using GestaoContas.Domain.Entities;
 using GestaoContas.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 

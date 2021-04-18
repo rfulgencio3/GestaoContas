@@ -19,13 +19,7 @@ namespace GestaoContas.Domain.Repository
             _gestaoContasDbContext.Depositos.Add(deposito);
             _gestaoContasDbContext.SaveChanges();
         }
-
-        public IEnumerable<Deposito> ObterTodosPorIdentificador()
-        {
-            return _gestaoContasDbContext.Depositos.ToList();
-        }
-
-        public void AtualizaSaldo(Deposito deposito)
+        public void AtualizarSaldo(Deposito deposito)
         {
             var saldo = _gestaoContasDbContext.Depositos
                 .Where(p => p.Identificador == deposito.Identificador)

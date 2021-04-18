@@ -1,10 +1,6 @@
-﻿using GestaoContas.Domain.Entities;
-using GestaoContas.Domain.Interfaces;
+﻿using GestaoContas.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GestaoContas.API.Controllers
 {

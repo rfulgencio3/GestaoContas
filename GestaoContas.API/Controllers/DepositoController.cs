@@ -2,9 +2,7 @@
 using GestaoContas.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace GestaoContas.API.Controllers
 {
@@ -20,24 +18,6 @@ namespace GestaoContas.API.Controllers
             _correntistaRepository = correntistaRepository;
         }
 
-        [HttpGet]
-        public IActionResult ObterTodos()
-        {
-            try
-            {
-                var correntistas = _depositoRepository.ObterTodosPorIdentificador();
-                if (!correntistas.Any())
-                {
-                    return NotFound("Nenhuma informação cadastrada.");
-                }
-                return Ok(correntistas);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"Ocorreu um erro na requisição: {ex.Message.ToString()}");
-            }
-        }
-
         [HttpPost]
         public IActionResult Adicionar([FromBody] Deposito deposito)
         {
@@ -48,7 +28,7 @@ namespace GestaoContas.API.Controllers
                     return StatusCode(404, $"Depósito não realizado, favor verificar se existe o identificador {deposito.Identificador} cadastrado.");
                 }
                 _depositoRepository.Adicionar(deposito);
-                _depositoRepository.AtualizaSaldo(deposito);
+                _depositoRepository.AtualizarSaldo(deposito);
                 return Ok($"Depósito com o valor de R$ {deposito.Valor} para o código identificador {deposito.Identificador} realizado com sucesso.");
             }
             catch (Exception ex)
