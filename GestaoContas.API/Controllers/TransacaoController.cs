@@ -13,9 +13,11 @@ namespace GestaoContas.API.Controllers
     public class TransacaoController : ControllerBase
     {
         ITransacaoRepository _transacaoRepository;
-        public TransacaoController(ITransacaoRepository transacaoRepository)
+        ICorrentistaRepository _correntistaRepository;
+        public TransacaoController(ITransacaoRepository transacaoRepository, ICorrentistaRepository correntistaRepository)
         {
             _transacaoRepository = transacaoRepository;
+            _correntistaRepository = correntistaRepository;
         }
 
         [HttpGet]
@@ -41,7 +43,7 @@ namespace GestaoContas.API.Controllers
         {
             try
             {
-                if (!_transacaoRepository.ValidaIdentificador(transacao.Identificador)) 
+                if (!_correntistaRepository.Existe(transacao.Identificador)) 
                 {
                     return StatusCode(404, $"Transação não realizada, favor verificar se existe o identificador {transacao.Identificador} cadastrado.");
                 }

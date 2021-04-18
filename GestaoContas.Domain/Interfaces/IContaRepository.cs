@@ -6,7 +6,6 @@ namespace GestaoContas.Domain.Interfaces
 {
     public interface IContaRepository
     {
-        void Adicionar(Conta conta);
-        IEnumerable<Conta> ObterTodas();
+        Correntista ObterPorIdentificador(Conta conta);
     }
 }

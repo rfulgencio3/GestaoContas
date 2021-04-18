@@ -14,15 +14,11 @@ namespace GestaoContas.Domain.Repository
         {
             _gestaoContasDbContext = gestaoContasDbContext;
         }
-
-        public void Adicionar(Conta conta)
+        public Correntista ObterPorIdentificador(Conta conta)
         {
-            _gestaoContasDbContext.Contas.Add(conta);
-            _gestaoContasDbContext.SaveChanges();
-        }
-        public IEnumerable<Conta> ObterTodas()
-        {
-            return _gestaoContasDbContext.Contas.ToList();
+            return _gestaoContasDbContext.Correntistas
+                .Where(p => p.Identificador.Equals(conta.Identificador))
+                .FirstOrDefault();
         }
     }
 }
