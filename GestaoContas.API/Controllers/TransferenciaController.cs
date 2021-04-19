@@ -49,8 +49,9 @@ namespace GestaoContas.API.Controllers
 
                 _transferenciaRepository.Adicionar(transferencia);
                 
-                _contaRepository.AtualizarSaldoContaOrigem(transferencia);
-                _contaRepository.AtualizarSaldoContaDestino(transferencia);
+                _contaRepository.AtualizarSaldoConta(transferencia.IdentificadorOrigem);
+                _contaRepository.AtualizarSaldoConta(transferencia.IdentificadorDestino);
+
                 return Ok($"Transferência da conta de origem {transferencia.IdentificadorOrigem} para conta destino {transferencia.IdentificadorDestino} com o valor de R$ {transferencia.Valor}, foi realizada com sucesso.");
             }
             catch (Exception ex)

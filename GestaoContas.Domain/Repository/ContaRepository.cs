@@ -23,30 +23,37 @@ namespace GestaoContas.Domain.Repository
                     .Sum(p => p.Valor);
         }
 
-        public void AtualizarSaldoContaOrigem(Transferencia transferencia)
+        public void AtualizarSaldoConta(int identificador)
         {
-            var saldoOrigem = _gestaoContasDbContext.Depositos
-                .Where(p => p.Identificador == transferencia.IdentificadorOrigem)
-                .Sum(p => p.Valor);
+            var saldoDepositos = BuscaSaldoDeposito(identificador);
+            var saldoTransferencias = BuscaSaldoTransferencia(identificador);
 
-            var saldoAposTransacao = saldoOrigem - transferencia.Valor;
+            var saldoAposTransacao = saldoDepositos + saldoTransferencias;
 
-            Conta atualizaContaSaldoOrigem = new Conta(transferencia.IdentificadorOrigem, saldoAposTransacao);
-            _gestaoContasDbContext.Contas.Update(atualizaContaSaldoOrigem);
+            Conta atualizarSaldo = new Conta(identificador, saldoAposTransacao);
+            _gestaoContasDbContext.Contas.Update(atualizarSaldo);
             _gestaoContasDbContext.SaveChanges();
         }
 
-        public void AtualizarSaldoContaDestino(Transferencia transferencia)
+        private decimal BuscaSaldoDeposito(int identificador)
         {
-            var saldoDestino = _gestaoContasDbContext.Depositos
-                .Where(p => p.Identificador == transferencia.IdentificadorOrigem)
+            var valorSaldoDeposito = _gestaoContasDbContext.Depositos
+                .Where(p => p.Identificador == identificador)
                 .Sum(p => p.Valor);
 
-            var saldoAposTransacao = saldoDestino + transferencia.Valor;
+            return valorSaldoDeposito;
+        }
+        private decimal BuscaSaldoTransferencia(int identificador)
+        {
+            var valorTransferenciasOrigem = _gestaoContasDbContext.Transferencias
+                .Where(p => p.IdentificadorOrigem == identificador)
+                .Sum(p => -p.Valor);
 
-            Conta atualizaContaSaldoDestino = new Conta(transferencia.IdentificadorOrigem, saldoAposTransacao);
-            _gestaoContasDbContext.Contas.Update(atualizaContaSaldoDestino);
-            _gestaoContasDbContext.SaveChanges();
+            var valorTransferenciasDestino = _gestaoContasDbContext.Transferencias
+                .Where(p => p.IdentificadorDestino == identificador)
+                .Sum(p => p.Valor);
+
+            return valorTransferenciasOrigem + valorTransferenciasDestino;
         }
     }
 }
