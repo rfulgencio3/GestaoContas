@@ -1,0 +1,62 @@
+<b><h2>Gestão Contas</h2></b>
+
+Solution desenvolvida para controlar operações básicas de gestão de contas
+	<i>Projetos:</i>
+		Class library 
+		Testes unitários 
+		Web API Core
+	Principais tecnologias utilizadas: 
+		estrutura: ASP.NET Core 3.1 (LTS)
+		bibliotecas:
+			banco: "Microsoft.EntityFrameworkCore.InMemory" Version="5.0.5"
+			
+			testes: "xUnit" Version="2.4.1"
+			
+			interface: "Swashbuckle.AspNetCore" Version="6.1.2"
+			
+			formatacao: "Microsoft.AspNetCore.JsonPatch" Version="3.1.10"
+						"Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.10" 	
+
+<b>Objetivo do projeto</b>
+	O intuito desse projeto é demonstrar exemplos para consumo/inserção de informações via API REST para:
+		realizar o CRUD de uma criação de conta (Correntista);
+		realizar consulta de saldo através do campo identificador da conta (Conta);
+		realizar depósitos (Deposito);
+		realizar transferência entre contas (Transferencia);
+
+<b>Endpoints:</b>
+	Conta
+		Método: Get
+		Parâmetro: identificador
+		Objetivo: Retornar o valor (numeric) do saldo atual da conta
+	
+	Correntista
+		Método: Get
+		Parâmetro: nenhum
+		Objetivo: Retornar todas as contas (JSON) cadastradas
+	
+		Método: Post
+		Parâmetro: nenhum
+		Objetivo: Realizar a criação de uma nova conta
+		Payload: 
+	
+		Método: Put
+		Parâmetro: nenhum
+		Objetivo: Realizar a alteração dos campos de um identificador cadastrado
+		Payload
+	
+		Método: Delete
+		Parâmetro: identificador
+		Objetivo: Realizar a exclusão de uma conta pelo identificador
+	
+	Deposito
+		Método: Post
+		Parâmetro: nenhum
+		Objetivo: Realizar o depósito de valor para o indenficador
+		Payload:
+	
+	Transferencia
+		Método: Post
+		Parâmetro: nenhum
+		Objetivo: Realizar a transferência de valor entre contas pelos identificadores
+		Payload:
