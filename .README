@@ -1,7 +1,7 @@
-<b><h2>Gestão Contas</h2></b>
+Gestão Contas
 
 Solution desenvolvida para controlar operações básicas de gestão de contas
-	<i>Projetos:</i>
+	Projetos:
 		Class library 
 		Testes unitários 
 		Web API Core
@@ -17,14 +17,14 @@ Solution desenvolvida para controlar operações básicas de gestão de contas
 			formatacao: "Microsoft.AspNetCore.JsonPatch" Version="3.1.10"
 						"Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.10" 	
 
-<b>Objetivo do projeto</b>
+Objetivo do projeto
 	O intuito desse projeto é demonstrar exemplos para consumo/inserção de informações via API REST para:
 		realizar o CRUD de uma criação de conta (Correntista);
 		realizar consulta de saldo através do campo identificador da conta (Conta);
 		realizar depósitos (Deposito);
 		realizar transferência entre contas (Transferencia);
 
-<b>Endpoints:</b>
+Endpoints:
 	Conta
 		Método: Get
 		Parâmetro: identificador
@@ -39,11 +39,23 @@ Solution desenvolvida para controlar operações básicas de gestão de contas
 		Parâmetro: nenhum
 		Objetivo: Realizar a criação de uma nova conta
 		Payload: 
-	
+			{
+				"identificador": 10,
+				"nome": "Ricardo",
+				"descricao": "Conta Corrente",
+				"status": 0
+			}
+			
 		Método: Put
 		Parâmetro: nenhum
 		Objetivo: Realizar a alteração dos campos de um identificador cadastrado
-		Payload
+		Payload:
+			{
+				"identificador": 10,
+				"nome": "Ricardo F",
+				"descricao": "Conta Investimentos",
+				"status": 0
+			}			
 	
 		Método: Delete
 		Parâmetro: identificador
@@ -54,9 +66,18 @@ Solution desenvolvida para controlar operações básicas de gestão de contas
 		Parâmetro: nenhum
 		Objetivo: Realizar o depósito de valor para o indenficador
 		Payload:
+			{
+				"identificador": 10,
+				"valor": 7890.99
+			}
 	
 	Transferencia
 		Método: Post
 		Parâmetro: nenhum
 		Objetivo: Realizar a transferência de valor entre contas pelos identificadores
 		Payload:
+			{
+				"identificadorOrigem": 10,
+				"identificadorDestino": 20,
+				"valor": 500
+			}
