@@ -8,14 +8,15 @@ Solution desenvolvida para controlar operações básicas de gestão de contas
 	Principais tecnologias utilizadas: 
 		estrutura: ASP.NET Core 3.1 (LTS)
 		bibliotecas:
-			banco: "Microsoft.EntityFrameworkCore.InMemory" Version="5.0.5"
-			
-			testes: "xUnit" Version="2.4.1"
-			
-			interface: "Swashbuckle.AspNetCore" Version="6.1.2"
-			
-			formatacao: "Microsoft.AspNetCore.JsonPatch" Version="3.1.10"
-						"Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.10" 	
+			banco: 
+				"Microsoft.EntityFrameworkCore.InMemory" Version="5.0.5"
+			testes: 
+				"xUnit" Version="2.4.1"
+			interface: 
+				"Swashbuckle.AspNetCore" Version="6.1.2"
+			formatacao: 
+				"Microsoft.AspNetCore.JsonPatch" Version="3.1.10"
+				"Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.10" 	
 
 Objetivo do projeto
 	O intuito desse projeto é demonstrar exemplos para consumo/inserção de informações via API REST para:
