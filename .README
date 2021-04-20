@@ -29,12 +29,12 @@ Endpoints:
 	Conta
 		Método: Get
 		Parâmetro: identificador
-		Objetivo: Retornar o valor (numeric) do saldo atual da conta
+		Objetivo: Retornar o valor (decimal) do saldo atual da conta
 	
 	Correntista
 		Método: Get
 		Parâmetro: nenhum
-		Objetivo: Retornar todas as contas (JSON) cadastradas
+		Objetivo: Retornar todas as contas (via JSON) cadastradas
 	
 		Método: Post
 		Parâmetro: nenhum
