@@ -41,8 +41,8 @@ namespace GestaoContas.API.Controllers
 
             try
             {
-                var saldoAtual = _contaRepository.VerificaSaldoOrigem(transferencia.IdentificadorOrigem);
-                if (saldoAtual <= transferencia.Valor)
+                var saldoAtual = _contaRepository.BuscaSaldoConta(transferencia.IdentificadorOrigem);
+                if (saldoAtual < transferencia.Valor)
                 {
                     return StatusCode(404, $"Transferência não realizada, saldo insuficiente para realizar a transação. Saldo conta origem R$ {saldoAtual}.");
                 }

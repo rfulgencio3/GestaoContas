@@ -23,12 +23,17 @@ namespace GestaoContas.Domain.Repository
                     .Sum(p => p.Valor);
         }
 
-        public void AtualizarSaldoConta(int identificador)
+        public decimal BuscaSaldoConta(int identificador)
         {
             var saldoDepositos = BuscaSaldoDeposito(identificador);
             var saldoTransferencias = BuscaSaldoTransferencia(identificador);
 
-            var saldoAposTransacao = saldoDepositos + saldoTransferencias;
+            return saldoDepositos + saldoTransferencias;
+        }
+
+        public void AtualizarSaldoConta(int identificador)
+        {
+            var saldoAposTransacao = BuscaSaldoConta(identificador);
 
             Conta atualizarSaldo = new Conta(identificador, saldoAposTransacao);
             _gestaoContasDbContext.Contas.Update(atualizarSaldo);
